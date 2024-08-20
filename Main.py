@@ -1,3 +1,15 @@
+def calculateGrade(grade):
+    if grade < 50:
+        return "Fail"
+    elif 50 <= grade < 60:
+        return "Pass"
+    elif 60 <= grade < 70:
+        return "Credit"
+    elif 70 <= grade < 80:
+        return "Distinction"
+    else:
+        return "High Distinction"
+
 def main():
     numAssessments = int(input("Enter number of Assessments: "))
     print(numAssessments)
@@ -30,20 +42,28 @@ def main():
             elif result > int(AssessmentValues[j]):
                 result = int(AssessmentValues[j])
 
+            assessmentPresentage= result/AssessmentValues[j]*100
+            grade=calculateGrade(assessmentPresentage)
+            print(grade)
+
             StudentTotal=StudentTotal+result
-            print(StudentTotal)
+        grade = calculateGrade(StudentTotal)
+        print(f'{StudentName} has a total number of: {StudentTotal} ({grade})')
 
-            if StudentTotal > topStudentResult:
-                TopStudentName=StudentName
-                TopStudentResult=StudentTotal
 
-            ClassTotalResult=ClassTotalResult+StudentTotal
+    if StudentTotal > topStudentResult:
+        TopStudentName=StudentName
+        TopStudentResult=StudentTotal
 
-            j=j+1
+        ClassTotalResult=ClassTotalResult+StudentTotal
 
-    print(TopStudentName)
-    print(TopStudentResult)
-    print(ClassTotalResult)
+        j=j+1
+
+    print ('All marks are entered!')
+    classAverage = ClassTotalResult/numStudents
+    print(f'The class average is {classAverage}')
+    print(f'The top student is {TopStudentName} with a total mark of {TopStudentResult}')
+
 
 
 
