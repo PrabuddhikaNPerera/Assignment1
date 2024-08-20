@@ -16,6 +16,16 @@ def main():
 
     numStudents = int(input("How many Students?: "))
 
+    TopStudentName= "test"
+    topStudentResult= 0
+    TotalResult = 0
+
+    for i in range(numStudents):
+        StudentName=(input(f' What is the name of student {i+1} : '))
+        for j in range(numAssessments):
+            result = input(f'What did {StudentName} get out of {AssessmentValues[i]} in the {AssessmentNames[i]} : ')
+
+
 
 
 main()
