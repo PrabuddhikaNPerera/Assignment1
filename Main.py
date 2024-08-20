@@ -18,13 +18,32 @@ def main():
 
     TopStudentName= "test"
     topStudentResult= 0
-    TotalResult = 0
+    ClassTotalResult = 0
 
     for i in range(numStudents):
         StudentName=(input(f' What is the name of student {i+1} : '))
+        StudentTotal=0
         for j in range(numAssessments):
-            result = input(f'What did {StudentName} get out of {AssessmentValues[i]} in the {AssessmentNames[i]} : ')
+            result = int(input(f'What did {StudentName} get out of {AssessmentValues[j]} in the {AssessmentNames[j]} : '))
+            if result < 0:
+                result = 0
+            elif result > int(AssessmentValues[j]):
+                result = int(AssessmentValues[j])
 
+            StudentTotal=StudentTotal+result
+            print(StudentTotal)
+
+            if StudentTotal > topStudentResult:
+                TopStudentName=StudentName
+                TopStudentResult=StudentTotal
+
+            ClassTotalResult=ClassTotalResult+StudentTotal
+
+            j=j+1
+
+    print(TopStudentName)
+    print(TopStudentResult)
+    print(ClassTotalResult)
 
 
 
