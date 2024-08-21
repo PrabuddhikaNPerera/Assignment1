@@ -91,6 +91,6 @@ def main():
     print(f'\nThe number of passed students is {passCount}')
     passPercentage = round((passCount / numStudents) * 100, 2)
     print(f'\nThe pass percentage is {passPercentage}%')
-    print(f'\n Top students are {TopStudentName} {TopStudentNames}')
+    print(f'\n Equal higher mark students are {TopStudentName} {TopStudentNames}')
 
 main()
