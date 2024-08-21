@@ -57,7 +57,6 @@ def main():
 
         ClassTotalResult=ClassTotalResult+StudentTotal
 
-
     print ('All marks are entered!')
     classAverage = ClassTotalResult/numStudents
     print(f'The class average is {classAverage}')
