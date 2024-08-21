@@ -53,15 +53,14 @@ def main():
 
         if StudentTotal > topStudentResult:
             TopStudentName=StudentName
-            TopStudentResult=StudentTotal
+            topStudentResult=StudentTotal
 
-            ClassTotalResult=ClassTotalResult+StudentTotal
+        ClassTotalResult=ClassTotalResult+StudentTotal
 
-        j=j+1
 
     print ('All marks are entered!')
     classAverage = ClassTotalResult/numStudents
     print(f'The class average is {classAverage}')
-    print(f'The top student is {TopStudentName} with a total mark of {TopStudentResult}')
+    print(f'The top student is {TopStudentName} with a total mark of {topStudentResult}')
 
 main()
