@@ -1,6 +1,6 @@
 #Student Name : Prabuddhika Panawalage
 #Student ID : 10609924
-
+import sys
 def calculateGrade(grade):
     #Calculate the grade based on the percentage
     if grade < 50:
@@ -16,10 +16,14 @@ def calculateGrade(grade):
 
 
 def main():
-    #Main function to process assessments and students
-    numAssessments = int(input("Enter number of Assessments: "))
+    try:
+        #Main function to process assessments and students
+        numAssessments = int(input("Enter number of Assessments: "))
+    except ValueError: print("Please enter an integer")
+
     AssessmentNames = []
     AssessmentValues = []
+
 
     #Collect details for each assessment
     for i in range(numAssessments):
@@ -34,16 +38,22 @@ def main():
 
     # Initialize variables to track top student and class totals
     TopStudentName = ""
+    TopStudentNames=[]
     topStudentResult = 0
     ClassTotalResult = 0
+    passCount=0
 
     # Collect results for each student
     for i in range(numStudents):
         StudentName = (input(f'\nWhat is the name of student {i + 1} : '))
         StudentTotal = 0
         for j in range(numAssessments):
-            result = int(
-                input(f'What did {StudentName} get out of {AssessmentValues[j]} in the {AssessmentNames[j]} : '))
+            result = input(f'What did {StudentName} get out of {AssessmentValues[j]} in the {AssessmentNames[j]} : ')
+            if result == "":
+                result = 0
+            else:
+                result = int(result)
+
             if result < 0:
                 result = 0
             elif result > int(AssessmentValues[j]):
@@ -52,8 +62,14 @@ def main():
             # Calculate the percentage for the assessment and the grade
             assessmentPresentage = result / AssessmentValues[j] * 100
             grade = calculateGrade(assessmentPresentage)
+
             print(f'{result} out of {AssessmentValues[j]} is a {grade}')
             StudentTotal = StudentTotal + result
+            # Update the pass student count
+        if grade != "Fail":
+            passCount+=1
+
+
 
         grade = calculateGrade(StudentTotal)
         print(f'{StudentName} has a total number of: {StudentTotal} ({grade})')
@@ -62,14 +78,19 @@ def main():
         if StudentTotal > topStudentResult:
             TopStudentName = StudentName
             topStudentResult = StudentTotal
+        elif StudentTotal == topStudentResult:
+            TopStudentNames.append(TopStudentName)
 
         ClassTotalResult = ClassTotalResult + StudentTotal
 
     # Display the results
     print('\nAll marks are entered!')
-    classAverage = ClassTotalResult / numStudents
+    classAverage = round(ClassTotalResult / numStudents)
     print(f'The class average is {classAverage}')
     print(f'The top student is {TopStudentName} with a total mark of {topStudentResult}')
-
+    print(f'\nThe number of passed students is {passCount}')
+    passPercentage = round((passCount / numStudents) * 100, 2)
+    print(f'\nThe pass percentage is {passPercentage}%')
+    print(f'\n Top students are {TopStudentName} {TopStudentNames}')
 
 main()
