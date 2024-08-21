@@ -1,6 +1,6 @@
 #Student Name : Prabuddhika Panawalage
 #Student ID : 10609924
-import sys
+
 def calculateGrade(grade):
     #Calculate the grade based on the percentage
     if grade < 50:
