@@ -12,7 +12,7 @@ def calculateGrade(grade):
 
 def main():
     numAssessments = int(input("Enter number of Assessments: "))
-    print(numAssessments)
+#    print(numAssessments)
     AssessmentNames = []
     AssessmentValues = []
 
@@ -23,17 +23,17 @@ def main():
     if sum(AssessmentValues) > 100:
         print('Error: Assessment values do not add up to 100')
 
-    print (AssessmentNames)
-    print (AssessmentValues)
+ #   print (AssessmentNames)
+ #   print (AssessmentValues)
 
-    numStudents = int(input("How many Students?: "))
+    numStudents = int(input("\nHow many Students?: "))
 
-    TopStudentName= "test"
+    TopStudentName= ""
     topStudentResult= 0
     ClassTotalResult = 0
 
     for i in range(numStudents):
-        StudentName=(input(f' What is the name of student {i+1} : '))
+        StudentName=(input(f'\nWhat is the name of student {i+1} : '))
         StudentTotal=0
         for j in range(numAssessments):
             result = int(input(f'What did {StudentName} get out of {AssessmentValues[j]} in the {AssessmentNames[j]} : '))
@@ -44,18 +44,18 @@ def main():
 
             assessmentPresentage= result/AssessmentValues[j]*100
             grade=calculateGrade(assessmentPresentage)
-            print(grade)
+            print(f'{result} out of {AssessmentValues[j]} is a {grade}')
 
             StudentTotal=StudentTotal+result
         grade = calculateGrade(StudentTotal)
         print(f'{StudentName} has a total number of: {StudentTotal} ({grade})')
 
 
-    if StudentTotal > topStudentResult:
-        TopStudentName=StudentName
-        TopStudentResult=StudentTotal
+        if StudentTotal > topStudentResult:
+            TopStudentName=StudentName
+            TopStudentResult=StudentTotal
 
-        ClassTotalResult=ClassTotalResult+StudentTotal
+            ClassTotalResult=ClassTotalResult+StudentTotal
 
         j=j+1
 
@@ -63,8 +63,5 @@ def main():
     classAverage = ClassTotalResult/numStudents
     print(f'The class average is {classAverage}')
     print(f'The top student is {TopStudentName} with a total mark of {TopStudentResult}')
-
-
-
 
 main()
