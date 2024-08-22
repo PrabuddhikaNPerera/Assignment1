@@ -14,12 +14,24 @@ def calculateGrade(grade):
     else:
         return "High Distinction"
 
+def get_positive_integer(prompt):
+    #Function to get a positive integer input from the user
+    while True:
+        try:
+            value = int(input(prompt))
+            if value < 1:
+                print("Error: The number must be integer. Please try again.")
+            else:
+                return value
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+
 
 def main():
-    try:
-        #Main function to process assessments and students
-        numAssessments = int(input("Enter number of Assessments: "))
-    except ValueError: print("Please enter an integer")
+
+    #Main function to process assessments and students
+    numAssessments = get_positive_integer("Enter number of Assessments: ")
+
 
     AssessmentNames = []
     AssessmentValues = []
@@ -28,13 +40,13 @@ def main():
     #Collect details for each assessment
     for i in range(numAssessments):
         AssessmentNames.append(input(f'Enter Assessment Name {i + 1} : '))
-        AssessmentValues.append(int(input(f'Enter Assessment Value {i + 1} :')))
+        AssessmentValues.append(get_positive_integer(f'Enter Assessment Value {i + 1} :'))
 
     #Check if the total of assessment values adds up to 100
     if sum(AssessmentValues) > 100:
         print('Error: Assessment values do not add up to 100')
 
-    numStudents = int(input("\nHow many Students?: "))
+    numStudents = get_positive_integer("\nHow many Students?: ")
 
     # Initialize variables to track top student and class totals
     TopStudentName = ""
@@ -48,7 +60,7 @@ def main():
         StudentName = (input(f'\nWhat is the name of student {i + 1} : '))
         StudentTotal = 0
         for j in range(numAssessments):
-            result = input(f'What did {StudentName} get out of {AssessmentValues[j]} in the {AssessmentNames[j]} : ')
+            result = get_positive_integer(f'What did {StudentName} get out of {AssessmentValues[j]} in the {AssessmentNames[j]} : ')
             if result == "":
                 result = 0
             else:
